@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -36,8 +37,13 @@ public class AccountController {
     @GetMapping("/accounts/{id}")
     public ResponseEntity<AccountDto> getAccount(@PathVariable(name = "id") String id){
         ModelMapper modelMapper = new ModelMapper();
+
         try{
-            return new ResponseEntity<>(modelMapper.map(accountService.getById(id).get(), AccountDto.class), HttpStatus.OK);
+            Optional<Account> resultAccount = accountService.getById(id);
+            if(resultAccount.isPresent()){
+                throw new RepositoryExeption("Aucun Account trouvé pour l'id suivant :"+id);
+            }
+            return new ResponseEntity<>(modelMapper.map(resultAccount.get(), AccountDto.class), HttpStatus.OK);
         }catch (RepositoryExeption e){
             return new ResponseEntity<>(new AccountDto(), HttpStatus.NO_CONTENT);
         }

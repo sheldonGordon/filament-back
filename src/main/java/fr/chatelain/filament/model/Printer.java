@@ -22,5 +22,5 @@ public class Printer extends AbstractEntities{
     @OneToOne
     private Picture picture;
     @OneToMany
-    List<Filament> listFilament;
+    private List<Filament> listFilament;
 }

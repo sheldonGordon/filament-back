@@ -41,11 +41,11 @@ public class FilamentController {
         ModelMapper modelMapper = new ModelMapper();
 
         try{
-            Optional<Filament> resultBrandFilament = filamentService.getById(id);
-            if(resultBrandFilament.isPresent()){
-                return new ResponseEntity<>(modelMapper.map(resultBrandFilament.get(), FilamentDto.class), HttpStatus.OK);
+            Optional<Filament> resultFilament = filamentService.getById(id);
+            if(resultFilament.isPresent()){
+                return new ResponseEntity<>(modelMapper.map(resultFilament.get(), FilamentDto.class), HttpStatus.OK);
             }else {
-                throw new RepositoryExeption("Aucun Brand trouvé pour l'id suivant :" + id);
+                throw new RepositoryExeption("Aucun Filament trouvé pour l'id suivant :" + id);
             }
         }catch (RepositoryExeption e){
             return new ResponseEntity<>(new FilamentDto(), HttpStatus.NO_CONTENT);

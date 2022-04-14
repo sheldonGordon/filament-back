@@ -26,7 +26,7 @@ public class BrandFilamentController {
     private BrandFilamentService brandFilamentService;
 
     @GetMapping("/brandFilaments")
-    public ResponseEntity<List<BrandFilamentDto>> getAllAccount(){
+    public ResponseEntity<List<BrandFilamentDto>> getAllBrandFilament(){
         List<BrandFilamentDto> listBrandFilamentDto = new ArrayList<>(0);
         ModelMapper modelMapper = new ModelMapper();
         try{
@@ -38,7 +38,7 @@ public class BrandFilamentController {
     }
 
     @GetMapping("/brandFilaments/{id}")
-    public ResponseEntity<BrandFilamentDto> getAccount(@PathVariable(name = "id") String id){
+    public ResponseEntity<BrandFilamentDto> getBrandFilament(@PathVariable(name = "id") String id){
         ModelMapper modelMapper = new ModelMapper();
 
         try{
@@ -54,7 +54,7 @@ public class BrandFilamentController {
     }
 
     @PostMapping("/brandFilament")
-    public ResponseEntity<BrandFilamentDto> saveAccount(@RequestBody BrandFilamentDto brandFilament) {
+    public ResponseEntity<BrandFilamentDto> saveBrandFilament(@RequestBody BrandFilamentDto brandFilament) {
         ModelMapper modelMapper = new ModelMapper();
         try {
             BrandFilament entity = modelMapper.map(brandFilament, BrandFilament.class);
@@ -66,7 +66,7 @@ public class BrandFilamentController {
     }
 
     @PutMapping("/brandFilament")
-    public ResponseEntity<BrandFilamentDto> updateAccount(@RequestBody BrandFilamentDto brandFilament) {
+    public ResponseEntity<BrandFilamentDto> updateBrandFilament(@RequestBody BrandFilamentDto brandFilament) {
         ModelMapper modelMapper = new ModelMapper();
         try {
             brandFilamentService.update(modelMapper.map(brandFilament, BrandFilament.class));
@@ -77,7 +77,7 @@ public class BrandFilamentController {
     }
 
     @DeleteMapping("/brandFilaments/{id}")
-    public ResponseEntity<String> deleteAccount(@PathVariable(name = "id") String id) {
+    public ResponseEntity<String> deleteBrandFilament(@PathVariable(name = "id") String id) {
         try {
             brandFilamentService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);

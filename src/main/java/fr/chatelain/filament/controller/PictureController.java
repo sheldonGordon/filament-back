@@ -1,9 +1,7 @@
 package fr.chatelain.filament.controller;
 
 import fr.chatelain.filament.exceptions.RepositoryExeption;
-import fr.chatelain.filament.model.Filament;
 import fr.chatelain.filament.model.Picture;
-import fr.chatelain.filament.model.dto.FilamentDto;
 import fr.chatelain.filament.model.dto.PictureDto;
 import fr.chatelain.filament.service.PictureService;
 import org.modelmapper.ModelMapper;

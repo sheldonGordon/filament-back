@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class AccountController {
@@ -41,9 +41,10 @@ public class AccountController {
         try{
             Optional<Account> resultAccount = accountService.getById(id);
             if(resultAccount.isPresent()){
+                return new ResponseEntity<>(modelMapper.map(resultAccount.get(), AccountDto.class), HttpStatus.OK);
+            }else{
                 throw new RepositoryExeption("Aucun Account trouvé pour l'id suivant :"+id);
             }
-            return new ResponseEntity<>(modelMapper.map(resultAccount.get(), AccountDto.class), HttpStatus.OK);
         }catch (RepositoryExeption e){
             return new ResponseEntity<>(new AccountDto(), HttpStatus.NO_CONTENT);
         }

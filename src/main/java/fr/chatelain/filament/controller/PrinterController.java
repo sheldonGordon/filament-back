@@ -25,7 +25,7 @@ public class PrinterController {
     private PrinterService printerService;
 
     @GetMapping("/printers")
-    public ResponseEntity<List<PrinterDto>> getAllPicture(){
+    public ResponseEntity<List<PrinterDto>> getAllPrinter(){
         List<PrinterDto> listPrinterDto = new ArrayList<>(0);
         ModelMapper modelMapper = new ModelMapper();
         try{
@@ -37,7 +37,7 @@ public class PrinterController {
     }
 
     @GetMapping("/printers/{id}")
-    public ResponseEntity<PrinterDto> getPicture(@PathVariable(name = "id") String id){
+    public ResponseEntity<PrinterDto> getPrinter(@PathVariable(name = "id") String id){
         ModelMapper modelMapper = new ModelMapper();
 
         try{
@@ -53,7 +53,7 @@ public class PrinterController {
     }
 
     @PostMapping("/printer")
-    public ResponseEntity<PrinterDto> savePicture(@RequestBody PrinterDto printer) {
+    public ResponseEntity<PrinterDto> savePrinter(@RequestBody PrinterDto printer) {
         ModelMapper modelMapper = new ModelMapper();
         try {
             Printer entity = modelMapper.map(printer, Printer.class);
@@ -65,7 +65,7 @@ public class PrinterController {
     }
 
     @PutMapping("/printer")
-    public ResponseEntity<PrinterDto> updatePicture(@RequestBody PrinterDto printer) {
+    public ResponseEntity<PrinterDto> updatePrinter(@RequestBody PrinterDto printer) {
         ModelMapper modelMapper = new ModelMapper();
         try {
             printerService.update(modelMapper.map(printer, Printer.class));
@@ -76,7 +76,7 @@ public class PrinterController {
     }
 
     @DeleteMapping("/printers/{id}")
-    public ResponseEntity<String> deletePicture(@PathVariable(name = "id") String id) {
+    public ResponseEntity<String> deletePrinter(@PathVariable(name = "id") String id) {
         try {
             printerService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.OK);

@@ -27,8 +27,8 @@ public class FilamentService implements IGenericService<Filament> {
         return FactoryFilament.getInstanceFilament();
     }
 
-    public Filament getInstance(BrandFilament brand, int temperature, double extrusionMultiplier, int bedTemperature, int withdrawal){
-        return FactoryFilament.getInstanceFilament(brand,temperature,extrusionMultiplier,bedTemperature,withdrawal);
+    public Filament getInstance(BrandFilament brand, double extrusionMultiplier, int bedTemperatureFirstLayer, int bedTemperatureOtherLayer, int extruderTemperatureFirstLayer, int extruderTemperatureOtherLayer, int lengthRetraction){
+        return FactoryFilament.getInstanceFilament(brand, extrusionMultiplier, bedTemperatureFirstLayer, bedTemperatureOtherLayer, extruderTemperatureFirstLayer, extruderTemperatureOtherLayer, lengthRetraction);
     }
 
     @Override

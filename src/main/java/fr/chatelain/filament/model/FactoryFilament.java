@@ -27,8 +27,8 @@ public class FactoryFilament {
         return new Filament();
     }
 
-    public static Filament getInstanceFilament(BrandFilament brand, int temperature, double extrusionMultiplier, int bedTemperature, int withdrawal){
-        return new Filament(brand, temperature, extrusionMultiplier, bedTemperature, withdrawal);
+    public static Filament getInstanceFilament(BrandFilament brand, double extrusionMultiplier, int bedTemperatureFirstLayer, int bedTemperatureOtherLayer, int extruderTemperatureFirstLayer, int extruderTemperatureOtherLayer, int lengthRetraction){
+        return new Filament(brand, extrusionMultiplier, bedTemperatureFirstLayer, bedTemperatureOtherLayer, extruderTemperatureFirstLayer, extruderTemperatureOtherLayer, lengthRetraction);
     }
 
     public static Picture getInstancePicture(){

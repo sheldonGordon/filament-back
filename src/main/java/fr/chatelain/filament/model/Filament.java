@@ -16,11 +16,15 @@ public class Filament extends AbstractEntities{
     @OneToOne
     private BrandFilament brand;
     @Column
-    private int temperature;
-    @Column
     private double extrusionMultiplier;
     @Column
-    private int bedTemperature;
+    private int bedTemperatureFirstLayer;
     @Column
-    private int withdrawal;
+    private int bedTemperatureOtherLayer;
+    @Column
+    private int extruderTemperatureFirstLayer;
+    @Column
+    private int extruderTemperatureOtherLayer;
+    @Column
+    private int lengthRetraction;
 }

@@ -17,6 +17,7 @@ import java.util.Optional;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
+@ResponseBody
 public class AccountController {
 
     @Autowired

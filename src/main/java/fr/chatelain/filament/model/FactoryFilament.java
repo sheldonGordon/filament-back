@@ -11,8 +11,8 @@ public class FactoryFilament {
         return new Account();
     }
 
-    public static Account getInstanceAccount(String firstName, String lastName, List<Printer> listPrinter){
-        return new Account(firstName, lastName, listPrinter);
+    public static Account getInstanceAccount(String aliasName, String firstName, String lastName, List<Printer> listPrinter){
+        return new Account(aliasName, firstName, lastName, listPrinter);
     }
 
     public static BrandFilament getInstanceBrandFilament(){

@@ -14,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = true)
 public class Account extends AbstractEntities{
+    @Column(unique = true)
+    String aliasName;
     @Column
     String firstName;
     @Column

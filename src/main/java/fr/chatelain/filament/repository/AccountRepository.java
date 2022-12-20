@@ -15,7 +15,7 @@ public class AccountRepository extends AbstractJpaRepository<Account>{
     @Autowired
     private EntityManager em;
 
-    public Account getByAlias(String alias) throws RepositoryExeption {
+    public Account getByAlias(String alias) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Account> cr = cb.createQuery(Account.class);
 
@@ -27,8 +27,7 @@ public class AccountRepository extends AbstractJpaRepository<Account>{
         TypedQuery<Account> query = em.createQuery(cr);
 
         if(query.getResultList().isEmpty()){
-            throw new RepositoryExeption(
-                    String.format("Aucun objet trouvé de type Account pour l'alias %s", alias));
+            return null;
         }
 
         return query.getSingleResult();

@@ -41,7 +41,7 @@ public class AccountService implements IGenericService<Account> {
         return genericJpaRepository.getById(id, Account.class);
     }
 
-    public Account getByAlias(String alias) throws RepositoryExeption {
+    public Account getByAlias(String alias) {
         return accountRepository.getByAlias(alias);
     }
 

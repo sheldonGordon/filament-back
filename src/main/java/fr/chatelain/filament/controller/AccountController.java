@@ -52,19 +52,16 @@ public class AccountController {
     }
 
     @GetMapping("/accounts/alias/{alias}")
-    public ResponseEntity<AccountDto> getAccountByAlias(@PathVariable(name = "alias") String alias){
+    public ResponseEntity<Boolean> getAccountByAlias(@PathVariable(name = "alias") String alias){
         ModelMapper modelMapper = new ModelMapper();
 
-        try{
             Account resultAccount = accountService.getByAlias(alias);
+
             if(resultAccount != null){
-                return new ResponseEntity<>(modelMapper.map(resultAccount, AccountDto.class), HttpStatus.OK);
-            }else{
-                throw new RepositoryExeption("Aucun Account trouvé pour l'alias suivant :"+alias);
+                return new ResponseEntity<>(true, HttpStatus.OK);
             }
-        }catch (RepositoryExeption e){
-            return new ResponseEntity<>(new AccountDto(), HttpStatus.NO_CONTENT);
-        }
+
+            return new ResponseEntity<>(false, HttpStatus.OK);
     }
 
     @PostMapping("/account")
